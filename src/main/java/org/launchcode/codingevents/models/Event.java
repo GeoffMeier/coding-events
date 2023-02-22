@@ -18,12 +18,23 @@ public class Event {
     @NotBlank(message = "Email is required")
     @Email(message = "Invalid Email Try Again")
     private String contactEmail;
+    private EventType type;
 
-    public Event(String name, String description, String contactEmail) {
+    public Event(String name, String description, String contactEmail,EventType type) {
+        this();
         this.name = name;
         this.description=description;
-        this.id=nextId;
-        nextId++;
+        this.contactEmail=contactEmail;
+        this.type=type;
+
+    }
+
+    public EventType getType() {
+        return type;
+    }
+
+    public void setType(EventType type) {
+        this.type = type;
     }
 
     public String getContactEmail() {
@@ -33,7 +44,10 @@ public class Event {
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
     }
-    public Event(){}
+    public Event(){
+        this.id=nextId;
+        nextId++;
+    }
 
     public String getName() {
         return name;
